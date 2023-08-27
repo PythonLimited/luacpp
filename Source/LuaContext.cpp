@@ -100,7 +100,7 @@ void LuaContext::CompileFolder(const std::string &path, const std::string &prefi
 					if (prefix == "") {
 						CompileFile(path.stem().string() ,path.string(), recompile);
 					} else {
-						CompileFile(prefix+"."+path.stem().string() ,path, recompile);
+						CompileFile(prefix+"."+path.stem().string() ,path.string(), recompile);
 					}
 				} catch (std::logic_error &e) {
 				}
