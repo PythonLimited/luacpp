@@ -98,9 +98,9 @@ void LuaContext::CompileFolder(const std::string &path, const std::string &prefi
 			if (path.extension() == ".lua") {
 				try {
 					if (prefix == "") {
-						CompileFile(path.stem().native() ,path, recompile);
+						CompileFile(path.stem().string() ,path.string(), recompile);
 					} else {
-						CompileFile(prefix+"."+path.stem().native() ,path, recompile);
+						CompileFile(prefix+"."+path.stem().string() ,path, recompile);
 					}
 				} catch (std::logic_error &e) {
 				}
