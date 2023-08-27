@@ -51,19 +51,21 @@ void LuaLibrary::AddCFunction(const std::string &name, lua_CFunction cfunction, 
 
 int LuaLibrary::RegisterFunctions(LuaState &L) {
 
-	std::vector<luaL_Reg> reg;
-	reg.reserve(functions.size() + 1);
+	luaL_Reg *reg = new luaL_Reg[functions.size()+1];
+	int count = 0;
 
 	for (auto & x : functions) {
 		LuaCFunction& lcf = x.second;
-		luaL_Reg r = { x.first.c_str(), lcf.getCFunction() };
-		reg.push_back(r);
+		 reg[count].name = x.first.c_str();
+		reg[count].func = lcf.getCFunction();
+		count++;
 	}
+	
+	reg[count].name = NULL;
+	reg[count].func = NULL;
 
-	luaL_Reg nullreg = { NULL, NULL };
-	reg.push_back(nullreg);
+	luaL_newlib(L, reg);
+	lua_setglobal(L,name.c_str());
 
-	luaL_newlib(L, &reg[0]);
-	lua_setglobal(L, name.c_str());
 	return 0;
 }
