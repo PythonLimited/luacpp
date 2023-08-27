@@ -42,7 +42,7 @@ void LuaLibrary::AddCFunction(const std::string &name, lua_CFunction cfunction) 
 }
 
 void LuaLibrary::AddCFunction(const std::string &name, lua_CFunction cfunction, bool replace) {
-	if (!Exists(name) or replace) {
+	if (!Exists(name) || replace) {
 		std::unique_ptr<LuaCFunction> func = std::make_unique<LuaCFunction>(cfunction);
 		func->setName(name);
 		functions.insert(std::make_pair(name, std::move(*func)));

@@ -26,6 +26,8 @@
 
 #include "LuaTUserData.hpp"
 
+#include <string>
+
 using namespace LuaCpp::Engine;
 
 int LuaTUserData::getTypeId() const {

@@ -24,6 +24,8 @@
 
 #include "LuaTNil.hpp"
 
+#include <string>
+
 using namespace LuaCpp::Engine;
 
 int LuaTNil::getTypeId() const {

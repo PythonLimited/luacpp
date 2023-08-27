@@ -24,6 +24,8 @@
 
 #include "LuaTBoolean.hpp"
 
+#include <string>
+
 using namespace LuaCpp::Engine;
 
 int LuaTBoolean::getTypeId() const {
